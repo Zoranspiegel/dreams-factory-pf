@@ -154,7 +154,7 @@ const Cart = () => {
             <p>&#128465;</p> Clean Cart
           </button>
         </div>
-        <button className={isAuth ? style.btn : style.btnX} onClick={(e) => checkout(e)}>
+        <button className={style.btn} onClick={(e) => checkout(e)}>
           CHECKOUT
         </button>
         <br />
