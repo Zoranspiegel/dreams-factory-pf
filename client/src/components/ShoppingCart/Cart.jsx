@@ -34,7 +34,7 @@ const Cart = () => {
       setIsAuth(true)
     }else{
       setIsAuth(false)
-  })
+  },[localStorage.getItem("token"),localStorage.U])
   
   const closeNav = () => {
     document.getElementById("myNav").style.width = "0%";
