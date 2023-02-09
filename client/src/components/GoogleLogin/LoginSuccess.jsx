@@ -26,7 +26,8 @@ const LoginSuccess = () => {
 
   const fetchAuthUser = async () => {
     const response = await axios
-      .get(`https://dreams-factory-pf-production.up.railway.app/api/v1/auth/user`, { withCredentials: true })
+    //.get(`https://dreams-factory-pf-production.up.railway.app/api/v1/auth/user`, { withCredentials: true })
+      .get(`https://dreams-factory-pf-production.up.railway.app/api/v1/auth/user`)
       .catch((err) => {
         console.log("Not properly authenticated");
       })
