@@ -25,7 +25,7 @@ const LoginSuccess = () => {
 
   const fetchAuthUser = async () => {
     const response = await axios
-      .get("https://c919-186-81-100-12.ngrok.io/api/v1/auth/user", { withCredentials: true })
+      .get("https://dreams-factory-pf-production.up.railway.app/api/v1/auth/user", { withCredentials: true })
       .catch((err) => {
         console.log("Not properly authenticated");
       })
