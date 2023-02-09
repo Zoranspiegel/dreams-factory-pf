@@ -72,7 +72,7 @@
     transform: scale(1.1);
   }
   
-.btnX {
+.btnX{
     background-color: grey;
     border: none;
     border-radius: 8px;
@@ -86,6 +86,7 @@
     pointer-events: none;
     transition-duration: 0.4s;
   }
+
   .btn {
     background-color: #4caf50;
     border: none;
