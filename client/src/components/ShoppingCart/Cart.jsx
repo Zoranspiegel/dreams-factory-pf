@@ -26,15 +26,15 @@ const Cart = () => {
     }
   }, [openCart]);
   
-  useEffect(()=>{
-    const token = localStorage.getItem("token");
-    const decoded = token ? jwt_decode(token) : null;
-    const ID = decoded ? JSON.stringify(decoded.id) : localStorage.U;
-    if(ID){
-      setIsAuth(true)
-    }else{
-      setIsAuth(false)
-  },[localStorage.getItem("token"),localStorage.U])
+//   useEffect(()=>{
+//     const token = localStorage.getItem("token");
+//     const decoded = token ? jwt_decode(token) : null;
+//     const ID = decoded ? JSON.stringify(decoded.id) : localStorage.U;
+//     if(ID){
+//       setIsAuth(true)
+//     }else{
+//       setIsAuth(false)
+//   },[localStorage.getItem("token"),localStorage.U])
   
   const closeNav = () => {
     document.getElementById("myNav").style.width = "0%";
@@ -43,8 +43,11 @@ const Cart = () => {
 
   const checkout = (e) => {
     e.preventDefault();
+    const token = localStorage.getItem("token");
+    const decoded = token ? jwt_decode(token) : null;
+    const ID = decoded ? JSON.stringify(decoded.id) : localStorage.U;
     console.log("ID: ", ID);
-    if (isAuth) {
+    if (ID) {
       const body = {
         items: cart_add.map((p) => {
           return {
