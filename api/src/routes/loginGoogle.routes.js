@@ -5,7 +5,7 @@ const User = require("../models/User");
 const router = Router();
 
 const home = `${process.env.FRONT_URL}`;
-const successLoginUrl = `${process.env.FRONT_URL}/login/success`;
+const successLoginUrl = `${process.env.FRONT_URL}`;
 const errorLoginUrl = `${process.env.FRONT_URL}/login/error`;
 
 
