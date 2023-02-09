@@ -31,9 +31,10 @@ const Cart = () => {
     const decoded = token ? jwt_decode(token) : null;
     const ID = decoded ? JSON.stringify(decoded.id) : localStorage.U;
     if(ID){
-      setIsAuth(true)
+      setIsAuth(true);
     }else{
-      setIsAuth(false)
+      setIsAuth(false);
+    }
   })
   
   const closeNav = () => {
@@ -46,7 +47,7 @@ const Cart = () => {
     const token = localStorage.getItem("token");
     const decoded = token ? jwt_decode(token) : null;
     const ID = decoded ? JSON.stringify(decoded.id) : localStorage.U;
-    if (ID) {
+    if (isAuth) {
       const body = {
         items: cart_add.map((p) => {
           return {
