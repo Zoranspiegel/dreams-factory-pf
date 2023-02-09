@@ -26,15 +26,15 @@ const Cart = () => {
     }
   }, [openCart]);
   
-//   useEffect(()=>{
-//     const token = localStorage.getItem("token");
-//     const decoded = token ? jwt_decode(token) : null;
-//     const ID = decoded ? JSON.stringify(decoded.id) : localStorage.U;
-//     if(ID){
-//       setIsAuth(true)
-//     }else{
-//       setIsAuth(false)
-//   },[localStorage.getItem("token"),localStorage.U])
+  useEffect(()=>{
+    const token = localStorage.getItem("token");
+    const decoded = token ? jwt_decode(token) : null;
+    const ID = decoded ? JSON.stringify(decoded.id) : localStorage.U;
+    if(ID){
+      setIsAuth(true)
+    }else{
+      setIsAuth(false)
+  })
   
   const closeNav = () => {
     document.getElementById("myNav").style.width = "0%";
@@ -46,7 +46,6 @@ const Cart = () => {
     const token = localStorage.getItem("token");
     const decoded = token ? jwt_decode(token) : null;
     const ID = decoded ? JSON.stringify(decoded.id) : localStorage.U;
-    console.log("ID: ", ID);
     if (ID) {
       const body = {
         items: cart_add.map((p) => {
@@ -154,9 +153,10 @@ const Cart = () => {
             <p>&#128465;</p> Clean Cart
           </button>
         </div>
-        <button className={style.btn} onClick={(e) => checkout(e)}>
+        <button disabled={!isAuth} className={isAuth ? style.btn : style.btnX} onClick={(e) => checkout(e)}>
           CHECKOUT
         </button>
+        {!isAuth ? <p>You must be logged first...</p> : null}
         <br />
       </div>
     </div>
