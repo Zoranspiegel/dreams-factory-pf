@@ -143,10 +143,8 @@ const Navbar = () => {
       localStorage.setItem("token", JSON.stringify(isLogg.token));
       document.getElementById("logoSession").style = "display: none";
       document.getElementById("modalcontainer").style = "display: none";
-      setTimeOut(()=>{
-        history.push("/");      
-        window.location.reload();
-      },500)      
+      history.push("/");      
+      window.location.reload();
     }
   }, [isLogg]);
 
