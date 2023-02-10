@@ -142,9 +142,11 @@ const Navbar = () => {
       toast.success("Welcome, Log In Successfull");
       localStorage.setItem("token", JSON.stringify(isLogg.token));
       document.getElementById("logoSession").style = "display: none";
-      history.push("/");
       document.getElementById("modalcontainer").style = "display: none";
-      window.location.reload();
+      setTimeOut(()=>{
+        history.push("/");      
+        window.location.reload();
+      },500)      
     }
   }, [isLogg]);
 
