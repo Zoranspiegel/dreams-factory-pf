@@ -12,7 +12,7 @@ import style from "./Cart.module.css";
 import jwt_decode from "jwt-decode";
 
 const Cart = () => {
-  const [isAuth, setIsAuth] = useState(false)
+  const [isAuth, setIsAuth] = useState(null)
   const dispatch = useDispatch();
   const openCart = useSelector((state) => state.clickOpenCart);
   const cart_add = useSelector((state) => state.add_Cart);
@@ -31,11 +31,11 @@ const Cart = () => {
     const decoded = token ? jwt_decode(token) : null;
     const ID = decoded ? JSON.stringify(decoded.id) : localStorage.U;
     if(ID){
-      setIsAuth(true);
+      setIsAuth(ID);
     }else{
-      setIsAuth(false);
+      setIsAuth(null);
     }
-  })
+  },[localStorage]);
   
   const closeNav = () => {
     document.getElementById("myNav").style.width = "0%";
@@ -44,14 +44,11 @@ const Cart = () => {
 
   const checkout = (e) => {
     e.preventDefault();
-    const token = localStorage.getItem("token");
-    const decoded = token ? jwt_decode(token) : null;
-    const ID = decoded ? JSON.stringify(decoded.id) : localStorage.U;
     if (isAuth) {
       const body = {
         items: cart_add.map((p) => {
           return {
-            category_id: ID,
+            category_id: isAuth,
             title: p.title,
             description: p.description,
             picture_url: p.img,
