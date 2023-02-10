@@ -141,7 +141,7 @@ const Cart = () => {
           <div className={style.totalPrice}>
             $
             {cart_add.reduce((acc, e) => {
-              let total = (acc + e.price) * e.cant;
+              let total = (acc + e.price * e.cant);
               let totalFixed = parseFloat(total.toFixed(2));
 
               return totalFixed;
